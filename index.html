@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>School Club</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>body{background:#ffffff}.card{margin-top:15px}</style>
+</head>
+<body class="container mt-4">
+<h2 class="text-center">School Club Information</h2>
+
+<div class="mb-3">
+  <select id="club" class="form-select">
+    <option value=""> Choose a club </option>
+    <option value="Math">Math</option>
+    <option value="Science">Science</option>
+    <option value="Band">Band</option>
+    <option value="Art">Art</option>
+    <option value="Gaming">Gaming</option>
+  </select>
+</div>
+
+<div class="card">
+  <div id="hdr" class="card-header bg-primary text-white">Club Information</div>
+  <div class="card-body">
+    <p id="intro">Welcome to the School Club. We offer activities and events for many interests.</p>
+    <h5>Meeting Time:</h5>
+    <p id="meeting">choose club first</p>
+    <h5>Members:</h5>
+    <p id="members">choose club first</p>
+    <h5>Activities:</h5>
+    <p id="activities">choose club first</p>
+
+  </div>
+</div>
+
+<script>
+const clubs = {
+  Math: { title: "Math Club", intro: "Solve problems and compete in competitions.", meeting: "Monday 3:00 PM", members: "45 members", activities: "Problem solving, competitions, tutoring", email: "math@schoolclub.edu" },
+  Science: { title: "Science Club", intro: "Run experiments and explore scientific concepts.", meeting: "Wednesday 3:30 PM", members: "52 members", activities: "Experiments, research, science fair", email: "science@schoolclub.edu" },
+  Band: { title: "Band Club", intro: "Play instruments and perform in concerts.", meeting: "Tuesday 4:00 PM", members: "38 members", activities: "Rehearsals, performances, concerts", email: "band@schoolclub.edu" },
+  Art: { title: "Art Club", intro: "Create artwork and display in galleries.", meeting: "Thursday 3:00 PM", members: "35 members", activities: "Painting, drawing, exhibitions", email: "art@schoolclub.edu" },
+  Gaming: { title: "Gaming Club", intro: "Play games and participate in tournaments.", meeting: "Friday 3:30 PM", members: "67 members", activities: "Gaming, tournaments, team matches", email: "gaming@schoolclub.edu" }
+};
+
+document.getElementById('club').addEventListener('change', (e) => {
+  const club = clubs[e.target.value];
+  if (!club) {
+    document.getElementById('hdr').textContent = 'Club Information';
+    document.getElementById('intro').textContent = 'Welcome to the School Club. We offer activities and events for many interests.';
+    document.getElementById('meeting').textContent = 'TBA';
+    document.getElementById('members').textContent = 'TBA';
+    document.getElementById('activities').textContent = 'TBA';
+    document.getElementById('contact').innerHTML = 'Email: <a href="mailto:info@schoolclub.edu">info@schoolclub.edu</a>';
+    return;
+  }
+  document.getElementById('hdr').textContent = club.title + ' Information';
+  document.getElementById('intro').textContent = club.intro;
+  document.getElementById('meeting').textContent = club.meeting;
+  document.getElementById('members').textContent = club.members;
+  document.getElementById('activities').textContent = club.activities;
+
+});
+</script>
+</body>
+</html>
